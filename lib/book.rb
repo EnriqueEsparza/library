@@ -48,8 +48,12 @@ class Book
     books
   end
 
-  define_singleton_method(:find_by_title) do
-
+  define_singleton_method(:find_by_title) do |title|
+    sql = "SELECT * FROM book WHERE title LIKE '#{title}'"
+    result = DB.exec(sql).first()
+    title = result.fetch('title')
+    author_id = result.fetch('author_id')
+    Book.new({ :title => title, :author_id => author_id})
   end
 
   define_method(:delete) do
