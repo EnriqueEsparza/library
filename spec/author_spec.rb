@@ -9,10 +9,12 @@ describe(Author) do
   end
 
   describe('.all') do
-  it('returns all authors') do
-    new_author = Author.new({ :name => 'Mike Jones'})
-    new_author.save()
-    expect(Author.all()).to(eq('Mike Jones'))
+    it('returns all authors') do
+      new_author = Author.new({ :name => 'Mike Jones'})
+      new_author.save()
+      new_author2 = Author.new({ :name => 'Bill Jones'})
+      new_author2.save()
+      expect(Author.all().length).to(eq(2))
     end
   end
 
