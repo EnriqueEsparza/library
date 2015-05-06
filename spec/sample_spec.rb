@@ -25,4 +25,13 @@ describe(Book) do
     end
   end
 
+  describe('.find') do
+    it("returns book by id") do
+      new_book = Book.new({ :title => "Intro to Ruby", :author_id => 1})
+      new_book.save()
+      id = new_book.id()
+      expect(Book.find(id)).to(eq(id))
+    end
+  end
+
 end
