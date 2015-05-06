@@ -36,6 +36,10 @@ class Book
     Book.new({ :title => title, :author_id => author_id, :id => id})
   end
 
+  define_singleton_method(:find_by_author) do |id|
+    []
+  end
+
   define_method(:delete) do
     DB.exec("DELETE FROM book WHERE id = #{self.id()};")
   end

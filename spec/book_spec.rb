@@ -35,6 +35,16 @@ describe(Book) do
     end
   end
 
+  describe('.find_by_author') do
+    it('returns a list of books by author id') do
+      new_book = Book.new({ :title => "Intro to Ruby", :author_id => 1})
+      new_book.save()
+      new_book2 = Book.new({ :title => "Ruby for Experts", :author_id => 1})
+      new_book2.save()
+      expect(Book.find_by_author(1).count()).to(eq(2))
+    end
+  end
+
   describe('#delete') do
     it('deletes the current book') do
       new_book = Book.new({ :title => "Intro to Ruby", :author_id => 1})
