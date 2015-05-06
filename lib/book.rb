@@ -1,5 +1,5 @@
 class Book
-  attr_reader(:title, :author_id)
+  attr_reader(:title, :author_id, :id)
 
   define_method(:initialize) do |attributes|
     @title = attributes.fetch(:title)
