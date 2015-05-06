@@ -8,8 +8,9 @@ class Book
 
   define_method(:save) do
     sql = "INSERT INTO book (title, author_id)
-    VALUES ('#{@title}', #{@author_id})"
-    DB.exec(sql)
+    VALUES ('#{@title}', #{@author_id}) RETURNING id;"
+    result = DB.exec(sql)
+    @id = result.first().fetch("id").to_i()
   end
 
   define_singleton_method(:all) do

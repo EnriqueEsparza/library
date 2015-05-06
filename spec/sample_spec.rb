@@ -21,7 +21,7 @@ describe(Book) do
     it('returns the database-assigned id of the book') do
       new_book = Book.new({ :title => "Intro to Ruby", :author_id => 1})
       new_book.save()
-      expect(new_book.id()).to(eq(Fixnum))
+      expect(new_book.id()).to(be_an_instance_of(Fixnum))
     end
   end
 
