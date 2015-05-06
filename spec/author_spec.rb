@@ -31,7 +31,7 @@ describe(Author) do
       new_author = Author.new({ :name => 'Mike Jones'})
       new_author.save()
       id = new_author.id()
-      expect(Author.find(id)).to(new_author.id)
+      expect(Author.find(id).id).to(eq(new_author.id))
     end
   end
 

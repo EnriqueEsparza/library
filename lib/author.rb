@@ -3,6 +3,9 @@ class Author
 
   define_method(:initialize) do |attributes|
     @name = attributes.fetch(:name)
+    if attributes.has_key?(:id)
+      @id = attributes.fetch(:id)
+    end
   end
 
   define_method(:save) do
@@ -18,13 +21,16 @@ class Author
     results.each do |result|
       name = result.fetch("name")
       id = result.fetch('id')
-      all_authors.push(Author.new({ :name => name }))
+      all_authors.push(Author.new({ :name => name, :id => id }))
     end
     all_authors
   end
 
-  define_singleton_method(:find) do
-
+  define_singleton_method(:find) do |id|
+    sql = "SELECT * FROM author WHERE id = #{id}"
+    result = DB.exec(sql).first()
+    name = result.fetch('name')
+    Author.new({ :name => name, :id => id })
   end
 
 end
