@@ -1,6 +1,6 @@
 require('sinatra')
 require('sinatra/reloader')
-require('./lib/sample')
+require('./lib/book')
 also_reload('lib/**/*.rb')
 require('pry')
 
