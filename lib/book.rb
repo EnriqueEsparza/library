@@ -36,4 +36,8 @@ class Book
     Book.new({ :title => title, :author_id => author_id, :id => id})
   end
 
+  define_method(:delete) do
+    
+  end
+
 end
