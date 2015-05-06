@@ -1,31 +1,42 @@
--- Postgres sample template for creating a new database
-
--- set psql var to new db name
-\set db new_db
+-- Postgres template for creating a new database
 
 -- create db
-CREATE DATABASE :db;
+CREATE DATABASE library;
 
 -- psql - switch to new DB context
-\connect :db
+\connect library
 
 -- create sample tables with auto index primary keys
 
-CREATE TABLE IF NOT EXISTS table_1 (
+CREATE TABLE IF NOT EXISTS book (
   id SERIAL PRIMARY KEY,
-  text varchar(32) DEFAULT NULL,
-  number integer DEFAULT 0,
-  date timestamp
+  title varchar,
+  author_id int
 );
 
-CREATE TABLE IF NOT EXISTS table_2 (
+CREATE TABLE IF NOT EXISTS book_copy (
   id SERIAL PRIMARY KEY,
-  table1_id integer DEFAULT NULL,
-  text varchar(32) DEFAULT NULL,
-  number integer DEFAULT 0,
-  date timestamp
+  book_id int
 );
 
+CREATE TABLE IF NOT EXISTS checkedout (
+  id SERIAL PRIMARY KEY,
+  patron_id int,
+  book_copy_id int,
+  on_date date
+);
+
+CREATE TABLE IF NOT EXISTS patron (
+  id SERIAL PRIMARY KEY,
+  name varchar
+);
+
+CREATE TABLE IF NOT EXISTS author (
+  id SERIAL PRIMARY KEY,
+  name varchar
+);
+
+CREATE DATABASE library_test WITH TEMPLATE library;
 
 
 /* Addtl. SQL syntax hints
