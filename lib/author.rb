@@ -1,13 +1,14 @@
 class Author
-  attr_reader(:name)
+  attr_reader(:name, :id)
 
   define_method(:initialize) do |attributes|
     @name = attributes.fetch(:name)
   end
 
   define_method(:save) do
-    sql = "INSERT INTO author (name) VALUES ('#{@name}')"
-    DB.exec(sql)
+    sql = "INSERT INTO author (name) VALUES ('#{@name}') RETURNING id;"
+    result = DB.exec(sql)
+    @id = result.first().fetch("id").to_i()
   end
 
   define_singleton_method(:all) do

@@ -14,7 +14,15 @@ describe(Author) do
       new_author.save()
       new_author2 = Author.new({ :name => 'Bill Jones'})
       new_author2.save()
-      expect(Author.all().length).to(eq(2))
+      expect(Author.all().count()).to(eq(2))
+    end
+  end
+
+  describe('id') do
+    it('returns the database assigned ID to the Author') do
+      new_author = Author.new({ :name => 'Mike Jones'})
+      new_author.save()
+      expect(new_author.id()).to(be_an_instance_of(Fixnum))
     end
   end
 
