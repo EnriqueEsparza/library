@@ -8,4 +8,13 @@ describe(Book) do
       expect(new_book.author_id()).to(eq(1))
     end
   end
+
+  describe('.all') do
+    it('returns all books in library') do
+    new_book = Book.new({ :title => "Intro to Ruby", :author_id => 1})
+    new_book.save()
+    expect(Book.all().length()).to(eq(1))
+    end
+  end
+
 end
