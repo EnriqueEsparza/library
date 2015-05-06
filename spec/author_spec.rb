@@ -26,4 +26,13 @@ describe(Author) do
     end
   end
 
+  describe('.find') do
+    it("returns author by id") do
+      new_author = Author.new({ :name => 'Mike Jones'})
+      new_author.save()
+      id = new_author.id()
+      expect(Author.find(id)).to(new_author.id)
+    end
+  end
+
 end
