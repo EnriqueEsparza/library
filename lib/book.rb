@@ -40,6 +40,4 @@ class Book
     DB.exec("DELETE FROM book WHERE id = #{self.id()};")
   end
 
-
-
 end
