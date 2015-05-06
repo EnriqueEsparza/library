@@ -35,4 +35,13 @@ describe(Author) do
     end
   end
 
+  describe('#delete') do
+    it('deletes the current author') do
+      new_author = Author.new({ :name => "Mike Jones"})
+      new_author.save()
+      new_author.delete()
+      expect(Author.all().length()).to(eq(0))
+    end
+  end
+
 end

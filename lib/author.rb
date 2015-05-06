@@ -33,4 +33,8 @@ class Author
     Author.new({ :name => name, :id => id })
   end
 
+  define_method(:delete) do
+    
+  end
+
 end
