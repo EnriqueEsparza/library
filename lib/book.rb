@@ -37,7 +37,19 @@ class Book
   end
 
   define_singleton_method(:find_by_author) do |id|
-    []
+    books = []
+    sql = "SELECT * FROM book WHERE author_id = #{id}"
+    results = DB.exec(sql)
+    results.each do |result|
+      title = result.fetch('title')
+      author_id = result.fetch('author_id')
+      books.push(Book.new({ :title => title, :author_id => author_id}))
+    end
+    books
+  end
+
+  define_singleton_method(:find_by_title) do
+
   end
 
   define_method(:delete) do
