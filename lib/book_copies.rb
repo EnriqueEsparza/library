@@ -12,4 +12,8 @@ class BookCopies
 
   end
 
+  define_singleton_method(:find) do |book_id|
+    []
+  end
+
 end
