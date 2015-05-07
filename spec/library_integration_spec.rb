@@ -28,6 +28,13 @@ describe('Library integration', { :type => :feature }) do
       expect(page).to have_content('Learn to Ruby')
     end
   end
+
+  it('Adds new Author') do
+    visit('/authors/add')
+    fill_in('name', :with => 'Bigshot Writer')
+    click_button('Add Author')
+    expect(page).to have_content('Bigshot Writer')
+  end
 end
 
 

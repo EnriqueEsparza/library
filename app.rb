@@ -9,7 +9,7 @@ also_reload('lib/**/*.rb')
 require('pry')
 require('pg')
 
-DB = PG.connect({:dbname => 'library_test'})
+DB = PG.connect({:dbname => 'library'})
 
 
 get('/test') do
@@ -21,6 +21,27 @@ end
 get('/') do
   erb(:index)
 end
+
+#add-author form
+get('/authors/add') do
+  erb(:author_add_form)
+end
+
+#add author
+post('/authors/add') do
+  new_author_name = params.fetch('name')
+  author = Author.new({ :name => new_author_name })
+  author.save()
+  redirect to('/authors')
+end
+
+#list authors
+get('/authors') do
+  @authors = Author.all()
+  erb(:authors)
+end
+
+
 
 #add-patron form
 get('/patrons/add') do
