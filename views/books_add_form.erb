@@ -1,6 +1,8 @@
 <form action='/books/add' method='post'>
   Title: <input type='text' name='title' id='title'>
   <br />
+  Quantity: <input type='text' name='copies' id='copies'>
+  <br />
   Author:
   <select id='author' name='author'>
       <% @authors.each do |author| %>

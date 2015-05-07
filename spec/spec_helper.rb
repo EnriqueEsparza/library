@@ -12,6 +12,7 @@ DB = PG.connect({:dbname => 'library_test'})
 RSpec.configure do |config|
   config.before(:each) do
     #optionally do something before each test
+    
   end
   config.after(:each) do
     DB.exec('DELETE FROM books *;')

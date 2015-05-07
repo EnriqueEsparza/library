@@ -9,7 +9,7 @@ also_reload('lib/**/*.rb')
 require('pry')
 require('pg')
 
-DB = PG.connect({:dbname => 'library'})
+DB = PG.connect({:dbname => 'library_test'})
 
 
 get('/test') do
@@ -77,7 +77,8 @@ end
 post('/books/add') do
   new_book_title = params.fetch('title')
   new_book_author = params.fetch('author')
-  new_book = Book.new({ :title => new_book_title, :author_id => new_book_author })
+  new_book_copies = params.fetch('copies')
+  new_book = Book.new({ :title => new_book_title, :author_id => new_book_author, :copies => new_book_copies })
   new_book.save()
   redirect to('/books')
 end

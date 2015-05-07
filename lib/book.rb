@@ -1,5 +1,5 @@
 class Book
-  attr_reader(:title, :author_id, :id)
+  attr_reader(:title, :author_id, :id, :copies)
 
   define_method(:initialize) do |attributes|
     @title = attributes.fetch(:title)
@@ -7,13 +7,22 @@ class Book
     if attributes.has_key?(:id)
       @id = attributes.fetch(:id)
     end
+    if attributes.has_key?(:copies)
+      @copies = attributes.fetch(:copies)
+    else
+      @copies = 1
+    end
   end
 
   define_method(:save) do
-    sql = "INSERT INTO books (title, author_id)
-    VALUES ('#{@title}', #{@author_id}) RETURNING id;"
+    sql = "INSERT INTO books (title, author_id) VALUES ('#{@title}', #{@author_id}) RETURNING id;"
     result = DB.exec(sql)
     @id = result.first().fetch("id").to_i()
+
+    @copies.times do
+      sql_copies = "INSERT INTO book_copies (book_id) VALUES (#{@id})"
+      DB.exec(sql_copies)
+    end
   end
 
   define_singleton_method(:all) do

@@ -64,4 +64,12 @@ describe(Book) do
     end
   end
 
+  describe('#copies') do
+    it('returns the number of copies of a book in the library') do
+      new_book = Book.new({ :title => "Intro to Ruby", :author_id => 1, :copies => 10})
+      new_book.save()
+      expect(new_book.copies()).to(eq(10))
+    end
+  end
+
 end

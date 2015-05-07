@@ -20,12 +20,30 @@ describe('Library integration', { :type => :feature }) do
     expect(page).to have_content('Test Dude')
   end
 
-  describe('Library integration', { :type => :feature}) do
+  describe('Books integration', { :type => :feature}) do
     it('Adds new book') do
+      #add author
+      visit('/authors/add')
+      fill_in('name', :with => 'Dude')
+      click_button('Add Author')
+      #add book
       visit('/books/add')
       fill_in('title', :with => 'Learn to Ruby')
+      select("Dude", :from => "author")
       click_button('Add Book')
+
       expect(page).to have_content('Learn to Ruby')
+    end
+    it('Adds copies of book to library') do
+      #add author
+      visit('/authors/add')
+      fill_in('name', :with => 'Dude')
+      click_button('Add Author')
+
+      visit('/books/add')
+      fill_in('copies', :with => '5')
+      click_button('Add Book')
+      expect(page).to have_content('5')
     end
   end
 
@@ -36,6 +54,10 @@ describe('Library integration', { :type => :feature }) do
     expect(page).to have_content('Bigshot Writer')
   end
 end
+
+
+
+
 
 
 
