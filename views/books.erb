@@ -1,6 +1,6 @@
 <h3>Books:</h3>
 <ul>
 <% @books.each do |book| %>
-  <li><%= book.title %></li>
+  <li><%= book.title %> -Author: <%=Author.find(book.author_id).name() %></li>
 <% end %>
 </ul>

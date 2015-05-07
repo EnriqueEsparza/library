@@ -1,4 +1,11 @@
 <form action='/books/add' method='post'>
   Title: <input type='text' name='title' id='title'>
+  <br />
+  Author:
+  <select id='author' name='author'>
+      <% @authors.each do |author| %>
+      <option value='<%= author.id() %>'><%= author.name %></option>
+      <% end %>
+  </select>
   <button type='submit'>Add Book</button>
 </form>

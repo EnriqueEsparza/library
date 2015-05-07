@@ -69,13 +69,15 @@ end
 
 #add-book form
 get('/books/add') do
+  @authors = Author.all()
   erb(:books_add_form)
 end
 
 #add-book form results
 post('/books/add') do
   new_book_title = params.fetch('title')
-  new_book = Book.new({ :title => new_book_title, :author_id => 2})
+  new_book_author = params.fetch('author')
+  new_book = Book.new({ :title => new_book_title, :author_id => new_book_author })
   new_book.save()
   redirect to('/books')
 end
