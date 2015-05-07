@@ -10,3 +10,22 @@ get('/test') do
   erb(:test)
   #redirect to('/')
 end
+
+get('/') do
+  erb(:index)
+end
+
+#add a patron
+get('/patrons/add')
+
+end
+
+#list all patrons
+get('/patrons')
+
+end
+
+#get a specific patron
+get('/patrons/:id')
+
+end

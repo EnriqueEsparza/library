@@ -1,4 +1,5 @@
 require('spec_helper')
+
 describe(Checkout) do
   describe('.find_by_patron_id') do
     it('returns a list of checkouts by patron id') do
