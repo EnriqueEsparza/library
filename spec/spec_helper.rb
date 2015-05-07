@@ -12,10 +12,10 @@ RSpec.configure do |config|
     #optionally do something before each test
   end
   config.after(:each) do
-    DB.exec('DELETE FROM book *;')
-    DB.exec('DELETE FROM book_copy *;')
+    DB.exec('DELETE FROM books *;')
+    DB.exec('DELETE FROM book_copies *;')
     DB.exec('DELETE FROM checkedout *;')
-    DB.exec('DELETE FROM patron *;')
-    DB.exec('DELETE FROM author *;')
+    DB.exec('DELETE FROM patrons *;')
+    DB.exec('DELETE FROM authors *;')
   end
 end

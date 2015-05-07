@@ -1,5 +1,10 @@
 -- Postgres template for creating a new database
 
+\connect Guest
+
+DROP DATABASE IF EXISTS library;
+DROP DATABASE IF EXISTS library_test;
+
 -- create db
 CREATE DATABASE library;
 
@@ -8,13 +13,13 @@ CREATE DATABASE library;
 
 -- create sample tables with auto index primary keys
 
-CREATE TABLE IF NOT EXISTS book (
+CREATE TABLE IF NOT EXISTS books (
   id SERIAL PRIMARY KEY,
   title varchar,
   author_id int
 );
 
-CREATE TABLE IF NOT EXISTS book_copy (
+CREATE TABLE IF NOT EXISTS book_copies (
   id SERIAL PRIMARY KEY,
   book_id int
 );
@@ -26,12 +31,12 @@ CREATE TABLE IF NOT EXISTS checkedout (
   on_date date
 );
 
-CREATE TABLE IF NOT EXISTS patron (
+CREATE TABLE IF NOT EXISTS patrons (
   id SERIAL PRIMARY KEY,
   name varchar
 );
 
-CREATE TABLE IF NOT EXISTS author (
+CREATE TABLE IF NOT EXISTS authors (
   id SERIAL PRIMARY KEY,
   name varchar
 );

@@ -9,14 +9,14 @@ class Patron
   end
 
   define_method(:save) do
-    sql = "INSERT INTO patron (name) VALUES ('#{@name}') RETURNING id;"
+    sql = "INSERT INTO patrons (name) VALUES ('#{@name}') RETURNING id;"
     result = DB.exec(sql)
     @id = result.first().fetch("id").to_i()
   end
 
   define_singleton_method(:all) do
     all_patrons = []
-    sql = "SELECT * FROM patron"
+    sql = "SELECT * FROM patrons"
     results = DB.exec(sql)
     results.each do |result|
       name = result.fetch("name")
@@ -27,14 +27,14 @@ class Patron
   end
 
   define_singleton_method(:find) do |id|
-    sql = "SELECT * FROM patron WHERE id = #{id}"
+    sql = "SELECT * FROM patrons WHERE id = #{id}"
     result = DB.exec(sql).first()
     name = result.fetch('name')
     Patron.new({ :name => name, :id => id })
   end
 
   define_method(:delete) do
-    DB.exec("DELETE FROM patron WHERE id = #{self.id()};")
+    DB.exec("DELETE FROM patrons WHERE id = #{self.id()};")
   end
 
 end

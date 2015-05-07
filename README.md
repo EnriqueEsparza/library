@@ -1,22 +1,23 @@
-## [APPNAME] ##
+## Library ##
 
 This application is meant to fulfill the requirements of an assignment through Epicodus code school. For more information on Epicodus, see <http://www.epicodus.com/>.
 
 ### Description ###
 
-[simple app description]
 
-**Assignment:** [assignment title]
+
+**Assignment:** Tuesday & Wednesday Week 3 classwork
 
 **<https://www.learnhowtoprogram.com/table-of-contents>**
 
 ### Author(s) ###
 
-Andrew Finstrom
+Andrew Finstrom & Enrique
 
 ### Setup ###
 ```
-    setup code or details here
+    bundle install
+    ruby app.rb
 ```
 
 ### License ###
