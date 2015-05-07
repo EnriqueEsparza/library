@@ -20,7 +20,14 @@ describe('Library integration', { :type => :feature }) do
     expect(page).to have_content('Test Dude')
   end
 
-  
+  describe('Library integration', { :type => :feature}) do
+    it('Adds new book') do
+      visit('/books/add')
+      fill_in('title', :with => 'Learn to Ruby')
+      click_button('Add Book')
+      expect(page).to have_content('Learn to Ruby')
+    end
+  end
 end
 
 

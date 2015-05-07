@@ -45,3 +45,22 @@ end
 get('/patrons/:id') do
 
 end
+
+#add-book form
+get('/books/add') do
+  erb(:books_add_form)
+end
+
+#add-book form results
+post('/books/add') do
+  new_book_title = params.fetch('title')
+  new_book = Book.new({ :title => new_book_title, :author_id => 2})
+  new_book.save()
+  redirect to('/books')
+end
+
+#list of added books
+get('/books') do
+  @books = Book.all()
+  erb(:books)
+end
