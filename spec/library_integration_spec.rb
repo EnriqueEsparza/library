@@ -12,7 +12,16 @@ describe('Sinatra framework check', { :type => :feature }) do
   end
 end
 
+describe('Library integration', { :type => :feature }) do
+  it('Adds new patron') do
+    visit('/patrons/add')
+    fill_in('name', :with => 'Test Dude')
+    click_button('Add Patron')
+    expect(page).to have_content('Test Dude')
+  end
 
+  
+end
 
 
 
